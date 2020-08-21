@@ -10,15 +10,13 @@
     </header>
 <?php
 $allow_in=0;
-$passwordError=0;
-$connentError=0;
+$error_message='';
 setcookie('have_cookie',1);
 try {
   require 'functions/identity.php';
-  
-} catch(\RuntimeException $e){
-  $connentError=1;
-} catch (\Exception $e) {
-  $passwordError=1;
-}
+  identity_check();
+  $allow_in=1;
+} catch(\UnexpectedValueException $e){
+  $error_message=$e->getMessage();
+} catch (\Exception $e) {}
 ?>

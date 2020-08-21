@@ -2,11 +2,9 @@
 require '../functions/identity.php';
 try {
   $res=identity_check();
-  echo $res;
-} catch(\RuntimeException $e){
-  echo 'connentError';
-} catch (\Exception $e) {
+  echo 'success<br>';
+} catch(\UnexpectedValueException $e){
   echo 'passwordError';
-}
-
+} 
+echo "11111";
 ?>
