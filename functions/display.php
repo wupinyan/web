@@ -18,12 +18,14 @@ function display_frame($content_path){
       <title></title>
       <style>
         h1{display: inline-block;margin-right: 20px}
+        #logout{display:none;}
       </style>
       <script src="jquery/jquery-3.4.1.min.js"></script>
     </head>
     <body>
       <header>
-        <h1>頁頂</h1><span id="logout_registered"></span>
+        <h1>頁頂</h1>
+        <a href='home.php'><button id="logout">登出</button></a>
       </header>
   <?php
   if ($allow_in==1) {
@@ -45,11 +47,15 @@ function display_frame($content_path){
   var allow_in=<?php echo $allow_in ?>;
   $(document).ready(function(){
     if (allow_in==1) {
-      var logout='<a><button>登出</button</a>';
-      var registered='<a><button>註冊</button</a>';
-      $('#logout_registered').html(logout+registered);
+      $('#logout').css('display','inline-block');
+      $('#logout').click(function(){
+        <?php
+        $_SESSION['allow_in']=0;
+        ?>
+      });
     }
   })
   </script>
   <?php
 }
+?>
