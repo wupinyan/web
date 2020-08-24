@@ -1,5 +1,4 @@
 <?php
-function f($file){
-  return $file;
-}
+require '../functions/display.php';
+display_frame('內容');
 ?>
