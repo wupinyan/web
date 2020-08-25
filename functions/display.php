@@ -2,6 +2,7 @@
 function display_frame($content_path){
   $allow_in=0;
   $error_message='';
+  $form_path='../form.php';
   setcookie('have_cookie',1);
   try {
     require 'identity.php';
@@ -30,7 +31,7 @@ function display_frame($content_path){
     $file=pathinfo($content_path,PATHINFO_BASENAME);
     require "../".$file;
   }else {
-    require '../form.php';
+    require $form_path;
     if (!empty($error_message)) {
       echo "<div>$error_message</div>";
     }
