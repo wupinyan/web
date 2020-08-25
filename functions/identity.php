@@ -8,13 +8,13 @@ function identity_check(){
         throw new \UnexpectedValueException("資庫連線錯誤");
       }
       $command="select *
-                from table1
-                where name=:name
-                and val1=:val1";
+                from identity
+                where user=:user
+                and password=:password";
       $stmt=$db->prepare($command);
-      $stmt->bindParam(':name',$_POST['user']);
-      $stmt->bindParam(':val1',$_POST['password']);
-      $stmt->execute();
+      $paramiters=[':user'=>$_POST['user'],
+                   ':password'=>$_POST['password']];
+      $stmt->execute($paramiters);
       $result=$stmt->fetchall(PDO::FETCH_ASSOC);
       if (count($result)!=1) {
         throw new \UnexpectedValueException("密碼錯誤");
