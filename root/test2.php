@@ -1,4 +1,3 @@
 <?php
-require '../functions/display.php';
-display_frame('內容');
+session_start();
 ?>
