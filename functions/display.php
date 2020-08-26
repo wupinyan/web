@@ -2,15 +2,19 @@
 function display_frame($content_path){
   $allow_in=0;
   $error_message='';
-  $form_path='../form.php';
+  $file=pathinfo($content_path,PATHINFO_BASENAME);
+  $form_path='../login_form.php';
+  if ($file=='registered.php') {
+    $form_path='../registered_form.php';
+  }
   setcookie('have_cookie',1);
   try {
     require 'identity.php';
     identity_check();
     $allow_in=1;
-  } catch(\UnexpectedValueException $e){
+  } catch(\Exception $e){
     $error_message=$e->getMessage();
-  } catch (\Exception $e) {}
+  }
   ?>
   <!DOCTYPE html>
   <html>
@@ -27,11 +31,10 @@ function display_frame($content_path){
       <header>
         <h1>頁頂</h1>
         <a href='home.php'><button id="logout">登出</button></a>
-        <a><button id="registered">註冊</button></a>
+        <a href='registered.php'><button id="registered">註冊</button></a>
       </header>
   <?php
   if ($allow_in==1) {
-    $file=pathinfo($content_path,PATHINFO_BASENAME);
     require "../".$file;
   }else {
     require $form_path;
@@ -51,9 +54,7 @@ function display_frame($content_path){
     if (allow_in==1) {
       $('#logout').css('display','inline-block');
       $('#logout').click(function(){
-        <?php
-        $_SESSION['allow_in']=0;
-        ?>
+        
       })
       $('#registered').css('display','inline-block');
     }
