@@ -1,4 +1,1 @@
-<?php
-$x=$_GET['x'];
-echo $x;
-?>
+<h1>bbb</h1>

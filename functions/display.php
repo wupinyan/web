@@ -54,7 +54,13 @@ function display_frame($content_path){
     if (allow_in==1) {
       $('#logout').css('display','inline-block');
       $('#logout').click(function(){
-        
+        $.get('logout.php',function(data,status){
+          if (status=='success') {
+            location.href='home.php';
+          }else {
+            alert('登出失敗');
+          }
+        })
       })
       $('#registered').css('display','inline-block');
     }

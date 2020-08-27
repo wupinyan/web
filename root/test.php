@@ -1,4 +1,4 @@
-<?php
-require '../functions/display.php';
-display_frame(__FILE__);
-?>
+<h1>aaa</h1>
+<script>
+  location.href='test2.php';
+</script>
