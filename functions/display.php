@@ -68,4 +68,15 @@ function display_frame($content_path){
   </script>
   <?php
 }
+function display_navPages($current_path){
+  $pages=['home','page1','page2','page3'];
+  $current_file=pathinfo($current_path,PATHINFO_FILENAME);
+  $new_pages=[];
+  foreach ($pages as $value) {
+    if ($value!=$current_file) {
+      $new_pages[]=$value;
+    }
+  }
+  return $new_pages;
+}
 ?>

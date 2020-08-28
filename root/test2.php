@@ -1,1 +1,4 @@
-<h1>bbb</h1>
+<?php
+$arr=['a','b'];
+echo json_encode($arr);
+?>
